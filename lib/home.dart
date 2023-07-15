@@ -1,4 +1,5 @@
 import 'package:first_getx_project/counter_controller.dart';
+import 'package:first_getx_project/listpage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -53,9 +54,15 @@ class _HomeState extends State<Home> {
                       cs.changeSwitchValue(value);
                     }),
               ),
+              IconButton(
+                  onPressed: () {
+                    Get.to(() => ListPage());
+                  },
+                  icon: Icon(Icons.align_vertical_center_rounded)),
               Spacer(),
               FloatingActionButton(onPressed: () {
                 controller.incrementCounter();
+                Icon(Icons.add);
               }),
             ],
           ),

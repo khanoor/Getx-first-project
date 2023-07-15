@@ -27,3 +27,22 @@ class ChangeSwitch extends GetxController {
     isSwitch.value = value;
   }
 }
+
+class AddRemoveList extends GetxController {
+  RxList<String> fruitList = [
+    "apple",
+    "banana",
+    'mango',
+    "orange",
+  ].obs;
+
+  RxList favList = [].obs;
+
+  addFav(String value) {
+    favList.add(value);
+  }
+
+  removeFav(String value) {
+    favList.remove(value);
+  }
+}
