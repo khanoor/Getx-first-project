@@ -3,6 +3,8 @@ import 'package:first_getx_project/listpage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import 'image_picker.dart';
+
 class Home extends StatefulWidget {
   const Home({super.key});
 
@@ -59,6 +61,11 @@ class _HomeState extends State<Home> {
                     Get.to(() => ListPage());
                   },
                   icon: Icon(Icons.align_vertical_center_rounded)),
+              IconButton(
+                  onPressed: () {
+                    Get.to(() => ImageScreen());
+                  },
+                  icon: Icon(Icons.swap_calls_outlined)),
               Spacer(),
               FloatingActionButton(onPressed: () {
                 controller.incrementCounter();
