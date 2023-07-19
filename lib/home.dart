@@ -3,6 +3,7 @@ import 'package:first_getx_project/listpage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import 'add_remove_list.dart';
 import 'image_picker.dart';
 
 class Home extends StatefulWidget {
@@ -61,6 +62,11 @@ class _HomeState extends State<Home> {
                     Get.to(() => ListPage());
                   },
                   icon: Icon(Icons.align_vertical_center_rounded)),
+              IconButton(
+                  onPressed: () {
+                    Get.to(() => TestListScreen());
+                  },
+                  icon: Icon(Icons.add)),
               IconButton(
                   onPressed: () {
                     Get.to(() => ImageScreen());

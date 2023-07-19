@@ -58,3 +58,16 @@ class imagePick extends GetxController {
     }
   }
 }
+
+class AddUser extends GetxController {
+  final userList = <Map<String, dynamic>>[
+    {'name': 'Test', 'age': 25},
+  ].obs;
+  void addUser(String name, int age) {
+    userList.add({'name': name, 'age': age});
+  }
+
+  void removeUser(int index) {
+    userList.removeAt(index);
+  }
+}
