@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'add_remove_list.dart';
+import 'get_api_list.dart';
 import 'image_picker.dart';
 
 class Home extends StatefulWidget {
@@ -67,6 +68,10 @@ class _HomeState extends State<Home> {
                     Get.to(() => TestListScreen());
                   },
                   icon: Icon(Icons.add)),
+
+              ElevatedButton(onPressed: () {
+                Get.to(() => GetApiScreen());
+              }, child: Text("Test List Screen")),
               IconButton(
                   onPressed: () {
                     Get.to(() => ImageScreen());

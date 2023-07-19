@@ -1,5 +1,9 @@
+import 'dart:convert';
+
+import 'package:first_getx_project/list_model.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:http/http.dart' as http;
 
 class CounterController extends GetxController {
   RxInt counter = 1.obs;
@@ -69,5 +73,31 @@ class AddUser extends GetxController {
 
   void removeUser(int index) {
     userList.removeAt(index);
+  }
+}
+
+class UserController extends GetxController {
+  var isLoading = true.obs;
+  var users = UserModel(data: [], page: null, support: null, perPage: null, total: null, totalPages: null).obs;
+
+  @override
+  void onInit() {
+    super.onInit();
+    fetchData();
+  }
+
+  Future<void> fetchData() async {
+    try {
+      isLoading.value = true;
+      final response = await http.get(Uri.parse('https://reqres.in/api/users?page=2'));
+      if (response.statusCode == 200) {
+        final jsonData = json.decode(response.body);
+        users.value = UserModel.fromJson(jsonData);
+      }
+    } catch (e) {
+      print('Error fetching data: $e');
+    } finally {
+      isLoading.value = false;
+    }
   }
 }
