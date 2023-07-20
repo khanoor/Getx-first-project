@@ -78,7 +78,14 @@ class AddUser extends GetxController {
 
 class UserController extends GetxController {
   var isLoading = true.obs;
-  var users = UserModel(data: [], page: null, support: null, perPage: null, total: null, totalPages: null).obs;
+  var users = UserModel(
+          data: [],
+          page: null,
+          support: null,
+          perPage: null,
+          total: null,
+          totalPages: null)
+      .obs;
 
   @override
   void onInit() {
@@ -89,7 +96,8 @@ class UserController extends GetxController {
   Future<void> fetchData() async {
     try {
       isLoading.value = true;
-      final response = await http.get(Uri.parse('https://reqres.in/api/users?page=2'));
+      final response =
+          await http.get(Uri.parse('https://reqres.in/api/users?page=2'));
       if (response.statusCode == 200) {
         final jsonData = json.decode(response.body);
         users.value = UserModel.fromJson(jsonData);
@@ -99,5 +107,26 @@ class UserController extends GetxController {
     } finally {
       isLoading.value = false;
     }
+  }
+}
+
+class DropDownController extends GetxController {
+  final List<String> items = [
+    'Question 1',
+    'Answer on question 1',
+  ];
+
+  var selectedValue = 'Question 1'.obs;
+  void updateSelectedValue(String newValue) {
+    selectedValue.value = newValue;
+  }
+
+  final List<String> items1 = [
+    'FAQ Test',
+    'Hello World !',
+  ];
+  var selectedValue1 = 'FAQ Test'.obs;
+  void updateSelectedValue1(String newValue) {
+    selectedValue1.value = newValue;
   }
 }

@@ -3,9 +3,11 @@ import 'package:first_getx_project/listpage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import 'Chat/Notice Board.dart';
 import 'add_remove_list.dart';
 import 'get_api_list.dart';
 import 'image_picker.dart';
+import 'myinfo_questions_screen.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -68,15 +70,28 @@ class _HomeState extends State<Home> {
                     Get.to(() => TestListScreen());
                   },
                   icon: Icon(Icons.add)),
-
-              ElevatedButton(onPressed: () {
-                Get.to(() => GetApiScreen());
-              }, child: Text("Test List Screen")),
+              ElevatedButton(
+                  onPressed: () {
+                    Get.to(() => GetApiScreen());
+                  },
+                  child: Text("Test List Screen")),
               IconButton(
                   onPressed: () {
                     Get.to(() => ImageScreen());
                   },
                   icon: Icon(Icons.swap_calls_outlined)),
+              ElevatedButton(
+                onPressed: () {
+                  Get.to(() => MyInfoPage());
+                },
+                child: Text("My Info Page"),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Get.to(() => ChatNoticeBoardScreen());
+                },
+                child: Text("Chat/Notice Board"),
+              ),
               Spacer(),
               FloatingActionButton(onPressed: () {
                 controller.incrementCounter();
